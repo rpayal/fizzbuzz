@@ -24,6 +24,10 @@ public class FizzBuzzServiceImpl implements FizzBuzzService {
 
     @Override
     public String getResultForRange(int from, int to) {
-        return null;
+        List<String> result = new ArrayList<String>();
+        for (int i = from; i <= to; i++) {
+            result.add(getResult(i));
+        }
+        return StringUtils.join(result, " ");
     }
 }
