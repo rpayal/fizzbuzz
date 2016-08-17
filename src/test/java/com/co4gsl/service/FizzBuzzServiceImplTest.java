@@ -23,4 +23,11 @@ public class FizzBuzzServiceImplTest {
         String result = fizzBuzzService.getResult(3);
         assertEquals(FizzBuzzService.MULTIPLE_OF_3_RESULT, result);
     }
+
+    @Test
+    public void testMultiplesOf5PrintBuzz() {
+        String result = fizzBuzzService.getResult(25);
+        assertEquals(FizzBuzzService.MULTIPLE_OF_5_RESULT, result);
+    }
+
 }
