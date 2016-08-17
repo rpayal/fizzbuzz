@@ -12,14 +12,6 @@ public interface FizzBuzzService {
     static final String NUMBER_CONTIN_3_RESULT = "lucky";
 
     /**
-     * Return string result for passed integer.
-     *
-     * @param i
-     * @return
-     */
-    String getResult(int i);
-
-    /**
      * Return list of string for range of integers.
      * @param from
      * @param to

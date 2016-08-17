@@ -11,7 +11,15 @@ import java.util.List;
 public class FizzBuzzServiceImpl implements FizzBuzzService {
 
     @Override
-    public String getResult(int number) {
+    public String getResultForRange(int from, int to) {
+        List<String> result = new ArrayList<String>();
+        for (int i = from; i <= to; i++) {
+            result.add(getResult(i));
+        }
+        return StringUtils.join(result, " ");
+    }
+
+    private String getResult(int number) {
         if (Integer.toString(number).contains("3"))
             return FizzBuzzService.NUMBER_CONTIN_3_RESULT;
         if (number % 15 == 0)
@@ -22,14 +30,5 @@ public class FizzBuzzServiceImpl implements FizzBuzzService {
             return FizzBuzzService.MULTIPLE_OF_5_RESULT;
 
         return number + "";
-    }
-
-    @Override
-    public String getResultForRange(int from, int to) {
-        List<String> result = new ArrayList<String>();
-        for (int i = from; i <= to; i++) {
-            result.add(getResult(i));
-        }
-        return StringUtils.join(result, " ");
     }
 }
