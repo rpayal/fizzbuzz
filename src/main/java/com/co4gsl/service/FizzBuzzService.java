@@ -17,4 +17,12 @@ public interface FizzBuzzService {
      * @return
      */
     String getResult(int i);
+
+    /**
+     * Return list of string for range of integers.
+     * @param from
+     * @param to
+     * @return
+     */
+    String getResultForRange(int from, int to);
 }

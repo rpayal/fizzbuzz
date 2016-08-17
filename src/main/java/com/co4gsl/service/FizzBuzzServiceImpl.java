@@ -21,4 +21,9 @@ public class FizzBuzzServiceImpl implements FizzBuzzService {
 
         return number + "";
     }
+
+    @Override
+    public String getResultForRange(int from, int to) {
+        return null;
+    }
 }
