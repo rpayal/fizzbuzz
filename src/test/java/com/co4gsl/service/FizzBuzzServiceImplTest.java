@@ -36,4 +36,10 @@ public class FizzBuzzServiceImplTest {
         assertEquals(FizzBuzzService.MULTIPLE_OF_3_AND_5_RESULT, result);
     }
 
+    @Test
+    public void testNotMultiplesOf3and5PrintNumber() {
+        String number = "14";
+        String result = fizzBuzzService.getResult(Integer.parseInt(number));
+        assertEquals(number, result);
+    }
 }
