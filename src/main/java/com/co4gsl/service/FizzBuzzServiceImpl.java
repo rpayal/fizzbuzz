@@ -19,6 +19,12 @@ public class FizzBuzzServiceImpl implements FizzBuzzService {
         return StringUtils.join(result, " ");
     }
 
+    /**
+     * Return corresponding result for a passed number.
+     *
+     * @param number
+     * @return
+     */
     private String getResult(int number) {
         if (Integer.toString(number).contains("3"))
             return FizzBuzzService.NUMBER_CONTIN_3_RESULT;
