@@ -49,4 +49,10 @@ public class FizzBuzzServiceImplTest {
         String result = fizzBuzzService.getResult(Integer.parseInt(number));
         assertEquals(number, result);
     }
+
+    @Test
+    public void testNumberContain3PrintLuck() {
+        String result = fizzBuzzService.getResultForRange(3, 3);
+        assertEquals(FizzBuzzService.NUMBER_CONTIN_3_RESULT, result);
+    }
 }
