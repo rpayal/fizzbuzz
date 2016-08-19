@@ -2,9 +2,10 @@ package com.co4gsl.service;
 
 import org.apache.commons.lang.StringUtils;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Created by rpayal on 17/08/2016.
@@ -13,10 +14,10 @@ public class FizzBuzzServiceImpl implements FizzBuzzService {
 
     @Override
     public String getResultForRange(int from, int to) {
-        List<String> result = new ArrayList<String>();
-        for (int i = from; i <= to; i++) {
-            result.add(getResult(i));
-        }
+        List<String> result = IntStream.rangeClosed(from, to)
+                .mapToObj(i -> getResult(i))
+                .collect(Collectors.toList());
+
         result.add("\n");
         result.add(getStatistics(result));
         return StringUtils.join(result, " ");
@@ -30,6 +31,7 @@ public class FizzBuzzServiceImpl implements FizzBuzzService {
      * if number contain 3 then {@link FizzBuzzService.NUMBER_CONTAINING_3_RESULT}
      * else return number
      * *
+     *
      * @param number
      * @return
      */
@@ -55,13 +57,13 @@ public class FizzBuzzServiceImpl implements FizzBuzzService {
     private String getStatistics(List<String> result) {
         StringBuilder sb = new StringBuilder();
         int fizzTotal = Collections.frequency(result, FizzBuzzService.MULTIPLE_OF_3_RESULT);
-        sb.append(FizzBuzzService.MULTIPLE_OF_3_RESULT + ":"+ fizzTotal + "\n");
+        sb.append(FizzBuzzService.MULTIPLE_OF_3_RESULT + ":" + fizzTotal + "\n");
         int buzzTotal = Collections.frequency(result, FizzBuzzService.MULTIPLE_OF_5_RESULT);
-        sb.append(FizzBuzzService.MULTIPLE_OF_5_RESULT + ":"+ buzzTotal + "\n");
+        sb.append(FizzBuzzService.MULTIPLE_OF_5_RESULT + ":" + buzzTotal + "\n");
         int fizzbuzzTotal = Collections.frequency(result, FizzBuzzService.MULTIPLE_OF_3_AND_5_RESULT);
-        sb.append(FizzBuzzService.MULTIPLE_OF_3_AND_5_RESULT + ":"+ fizzbuzzTotal + "\n");
+        sb.append(FizzBuzzService.MULTIPLE_OF_3_AND_5_RESULT + ":" + fizzbuzzTotal + "\n");
         int luckTotal = Collections.frequency(result, FizzBuzzService.NUMBER_CONTAINING_3_RESULT);
-        sb.append(FizzBuzzService.NUMBER_CONTAINING_3_RESULT + ":"+ luckTotal + "\n");
+        sb.append(FizzBuzzService.NUMBER_CONTAINING_3_RESULT + ":" + luckTotal + "\n");
 
         sb.append("integer" + ":" + (result.size() - (fizzTotal + buzzTotal + fizzbuzzTotal + luckTotal) - 1) + "\n");
         return sb.toString();
